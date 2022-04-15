@@ -10,3 +10,7 @@ test("We can get the GitHub of the engineer", () => {
     expect(engineer.getGithub()).toBe("test")
 })
 // getRole()
+test("We can get the role of the engineer", () => {
+    const engineer = new Engineer()
+    expect(engineer.getRole()).toBe("engineer")
+})
