@@ -9,3 +9,8 @@ test("We can get the School of the intern", () => {
     const intern = new Intern("John Smith", "210", "testing@test.com", "school")
     expect(intern.getSchool()).toBe("school")
 })
+// getRole()
+test("We can get the Role of the intern", () => {
+    const intern = new Intern("John Smith", "210", "testing@test.com", "school")
+    expect(intern.getRole()).toBe("intern")
+})
