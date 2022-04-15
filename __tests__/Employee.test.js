@@ -17,6 +17,10 @@ test("Can set the id of the employee", () =>{
     expect(employee.id).toBe("210")
 })
 // email
+test("Can set the email of the employee", () =>{
+    const employee = new Employee("John Smith", "210", "testing@test.com")
+    expect(employee.email).toBe("testing@test.com")
+})
 // getName()
 // getId()
 // getEmail()
