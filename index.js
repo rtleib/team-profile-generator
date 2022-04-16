@@ -77,5 +77,23 @@ inquirer
           const newEngineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
           team.push(newEngineer);
           console.log(newEngineer)
+          inquirer
+          .prompt([
+            {
+              type: 'list',
+              name: 'choice',
+              message: 'Which member would you like to add?',
+              choices: ['Engineer', 'Intern', 'None'],
+            },
+          ])
+          .then((data) => {
+            if (data.choice === 'Engineer') {
+              createEngineer();
+            } else if (data.choice === 'Intern') {
+              createIntern();
+            } else {
+              writeToFile('index.html', html(team));
+            }
+          });
       });
   }
