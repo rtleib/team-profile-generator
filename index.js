@@ -49,3 +49,33 @@ inquirer
         }
       });
   })
+  function createEngineer() {
+    inquirer
+      .prompt([
+        {
+          type: 'input',
+          name: 'engineerName',
+          message: "What is the engineer's name?",
+        },
+        {
+            type: 'input',
+            name: 'engineerId',
+            message: "What is the engineer's id?",
+        },
+        {
+            type: 'input',
+            name: 'engineerEmail',
+            message: "What is the engineer's email?",
+        },
+        {
+            type: 'input',
+            name: 'engineerGithub',
+            message: "What is the engineer's Git Hub username?",
+        },
+      ])
+      .then((data) => {
+          const newEngineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
+          team.push(newEngineer);
+          console.log(newEngineer)
+      });
+  }
