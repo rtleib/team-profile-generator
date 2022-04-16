@@ -30,4 +30,22 @@ inquirer
       const newManager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOfficeNumber);
       team.push(newManager);
       console.log(newManager)
+      inquirer
+      .prompt([
+        {
+          type: 'list',
+          name: 'choice',
+          message: 'Which member would you like to add?',
+          choices: ['Engineer', 'Intern', 'None'],
+        },
+      ])
+      .then((data) => {
+        if (data.choice === 'Engineer') {
+          createEngineer();
+        } else if (data.choice === 'Intern') {
+          createIntern();
+        } else {
+          writeToFile('index.html', html(team));
+        }
+      });
   })
