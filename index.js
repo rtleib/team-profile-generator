@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const { Employee, Engineer, Intern, Manager } = require('./lib');
 console.log(Employee);
+const team = [];
 
 inquirer
   .prompt([
@@ -25,3 +26,8 @@ inquirer
         message: "What is the mangager's office number?",
     },
   ])
+  .then((data) => {
+      const newManager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOfficeNumber);
+      team.push(newManager);
+      console.log(newManager)
+  })
