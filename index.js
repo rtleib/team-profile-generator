@@ -1,4 +1,6 @@
 const inquirer = require('inquirer');
+const html = require('./src/index.html');
+const fs = require('fs');
 const { Employee, Engineer, Intern, Manager } = require('./lib');
 console.log(Employee);
 const team = [];
@@ -45,10 +47,16 @@ inquirer
         } else if (data.choice === 'Intern') {
             createIntern();
         } else {
-          writeToFile('index.html', html(team));
+            writeToFile();
         }
       });
   })
+  function writeToFile() {
+    return fs.writeFile('index.html', html(team), (error) => {
+        if (error) throw error;
+        console.log('success');
+      });
+    }
   function createIntern() {
     inquirer
     .prompt([
@@ -92,7 +100,7 @@ inquirer
           } else if (data.choice === 'Intern') {
             createIntern();
           } else {
-            writeToFile('index.html', html(team));
+            writeToFile();
           }
         })
     })
@@ -140,9 +148,8 @@ inquirer
             } else if (data.choice === 'Intern') {
               createIntern();
             } else {
-              writeToFile('index.html', html(team));
+              writeToFile();
             }
           })
       })
-
   }
