@@ -1,9 +1,10 @@
 const inquirer = require('inquirer');
-const html = require('./src/index.html');
 const fs = require('fs');
+const generateIndex = require('./src/generateIndex')
 const { Employee, Engineer, Intern, Manager } = require('./lib');
 console.log(Employee);
 const team = [];
+const html = generateIndex(team);
 
 inquirer
   .prompt([
@@ -51,9 +52,10 @@ inquirer
         }
       });
   })
+
   function writeToFile() {
-    return fs.writeFile('index.html', html(team), (error) => {
-        if (error) throw error;
+    return fs.writeFile('./src/index.html', html, (error) => {
+        if (error) throw new error;
         console.log('success');
       });
     }
