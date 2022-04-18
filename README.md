@@ -1,4 +1,4 @@
-# Professional README Generator
+# Professional Team Profile Generator
   ## Description
   #### This challenge is to create a team profile generator. The purpose of this is to use node, npm, javascript, html to generate the team profile.
   ## Table of Contents
