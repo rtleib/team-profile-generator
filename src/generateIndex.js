@@ -1,10 +1,8 @@
-const Manager = require("../lib/Manager")
-const Intern = require("../lib/Intern")
-const Engineer = require("../lib/Engineer")
+var html;
 
 function generateManager(Manager) {
     return `
-      <h2 class="Manager">${Manager.getRole()}</h2>
+      <h2 class="Manager">${Manager.getRole}</h2>
       <p>
         Name: ${Manager.getName}
         Id: ${Manager.getId}
@@ -40,7 +38,12 @@ function generateIntern(Intern) {
   `
  }
 }
-  function generateIndex() {
+  function generateIndex(team) {
+    for(let i = 0; i < team.length; i++) {
+      if(team[i].getRole() == "Engineer") {
+        html += generateEngineer(team[i])
+      }else if(team[i].getRole() == "Intern") {
+        html += generateIntern(team[i])
     return `
   <!DOCTYPE html>
   <html lang="en">
@@ -66,6 +69,5 @@ function generateIntern(Intern) {
   </body>
   </html>
   `
-  }
-
+        }}}
   module.exports = generateIndex;
