@@ -2,35 +2,41 @@
 const generateIndex = team => {
   const generateManager= Manager =>{
       return `
-      <h2 class="Manager">Manager</h2>
+      <div>
+      <h2 class=manager>Manager</h2>
       <p>
         Name: ${Manager.name} </br>
         Id: ${Manager.id} </br>
         Email: ${Manager.email} </br>
         Office Number: ${Manager.officeNumber} </br>
       </p>
+      </div>
       `;
   };
   const generateIntern = Intern => {
       return `
-      <h2 class="intern">Intern</h2>
+      <div>
+      <h2 class=intern>Intern</h2>
       <p>
         Name: ${Intern.name} </br>
         Id: ${Intern.id} </br>
         Email: ${Intern.email} </br>
         School: ${Intern.school} </br>
       </p>
+      </div>
       `;
   };
     const generateEngineer = Engineer => {
       return `
-      <h2 class="engineer">Role</h2>
+      <div>
+      <h2 class=engineer>Role</h2>
       <p>
         Name: ${Engineer.name} </br>
         Id: ${Engineer.id} </br>
         Email: ${Engineer.email} </br>
         GitHub: ${Engineer.github} </br>
       </p>
+      </div>
       `;
   };
 
@@ -65,6 +71,7 @@ module.exports = team => {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../dist/css/style.css" />"
     <title>Team Profile Portfolio</title>
   </head>
   <body>

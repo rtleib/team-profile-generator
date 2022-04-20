@@ -1,0 +1,17 @@
+*{
+    background-image: linear-gradient(to right, #ffe761dc, #db101a);
+    background-size: cover;
+    text-align: center;
+}
+header{
+    color:darkorange;
+    text-shadow: 2px 2px 4px blue;
+}
+h2{
+    color:violet;
+    text-shadow: 2px 2px 4px blue;
+}
+p{
+    color:aqua;
+    text-shadow: 2px 2px 4px blue;
+}
