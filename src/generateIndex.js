@@ -1,56 +1,53 @@
 // var html;
-function generateIndex (team) {
-  function generateManager(Manager) {
+const generateIndex = team => {
+  const generateManager= Manager =>{
       return `
-        <h2 class="Manager">${Manager.getRole}</h2>
-        <p>
-          Name: ${Manager.getName}
-          Id: ${Manager.getId}
-          Email: ${Manager.getEmail}
-          Office Number: ${Manager.officeNumber}
-        </p>
-     `;
-  };
-  function generateIntern(Intern) {
-      if(Intern.getRole() === "Intern"){
-      return `
-        <h2 class="intern">${Intern.getRole}</h2>
-        <p>
-          Name: ${Intern.getName}
-          Id: ${Intern.getId}
-          Email: ${Intern.getEmail}
-          School: ${Intern.getSchool}
-        </p>    
+      <h2 class="Manager">Manager</h2>
+      <p>
+        Name: ${Manager.name} </br>
+        Id: ${Manager.id} </br>
+        Email: ${Manager.email} </br>
+        Office Number: ${Manager.officeNumber} </br>
+      </p>
       `;
-    };
   };
-    function generateEngineer(Engineer) {
-      if(Engineer.getRole() === "Engineer"){
+  const generateIntern = Intern => {
       return `
-          <h2 class="engineer">${Engineer.getRole}</h2>
-          <p>
-            Name: ${Engineer.getName}
-            Id: ${Engineer.getId}
-            Email: ${Engineer.getEmail}
-            GitHub: ${Engineer.getGithub}
-          </p>
+      <h2 class="intern">Intern</h2>
+      <p>
+        Name: ${Intern.name} </br>
+        Id: ${Intern.id} </br>
+        Email: ${Intern.email} </br>
+        School: ${Intern.school} </br>
+      </p>
       `;
-    };
+  };
+    const generateEngineer = Engineer => {
+      return `
+      <h2 class="engineer">Role</h2>
+      <p>
+        Name: ${Engineer.name} </br>
+        Id: ${Engineer.id} </br>
+        Email: ${Engineer.email} </br>
+        GitHub: ${Engineer.github} </br>
+      </p>
+      `;
   };
 
   var html = [];
 
   html.push(team
-    .filter(employee => employee.getRole() === "Manager")
+    .filter(employee => employee.getRole() === "manager")
     .map(manager => generateManager(manager))
+    .join("")
   );
   html.push(team
-      .filter(employee => employee.getRole() === "Engineer")
+      .filter(employee => employee.getRole() === "engineer")
       .map(engineer => generateEngineer(engineer))
       .join("")
   );
   html.push(team
-      .filter(employee => employee.getRole() === "Intern")
+      .filter(employee => employee.getRole() === "intern")
       .map(intern => generateIntern(intern))
       .join("")
   );
@@ -60,15 +57,8 @@ function generateIndex (team) {
 
 
 module.exports = team => {
-    // for(let i = 0; i < team.length; i++) {
-    //   if(team[i].getRole() == "Engineer") {
-    //     html += generateEngineer(team[i])
-    //   }else if(team[i].getRole() == "Intern") {
-    //     html += generateIntern(team[i])
-    //   } else if(team[i].getRole() == "Manager"){
-    //     html += generateIntern(team[i])
-    //   }
-    return `
+  const thisTeam = generateIndex(team);
+  return `
   <!DOCTYPE html>
   <html lang="en">
   <head>
