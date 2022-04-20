@@ -54,7 +54,7 @@ inquirer
   })
 
   function writeToFile() {
-    return fs.writeFile('./src/index.html', html, (error) => {
+    return fs.writeFile('index.html', html, (error) => {
         if (error) throw new error;
         console.log('success');
       });

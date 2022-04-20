@@ -1,49 +1,73 @@
-var html;
-
-function generateManager(Manager) {
-    return `
-      <h2 class="Manager">${Manager.getRole}</h2>
-      <p>
-        Name: ${Manager.getName}
-        Id: ${Manager.getId}
-        Email: ${Manager.getEmail}
-        Office Number: ${Manager.officeNumber}
-      </p>
-  `
-  }
-function generateIntern(Intern) {
-    if(Intern.getRole() === "Intern"){
-  return `
-    <h2 class="intern">${Intern.getRole}</h2>
-    <p>
-      Name: ${Intern.getName}
-      Id: ${Intern.getId}
-      Email: ${Intern.getEmail}
-      School: ${Intern.getSchool}
-    </p>
-  
-  `
-}
-}
-  function generateEngineer(Engineer) {
-      if(Engineer.getRole() === "Engineer"){
-    return `
-        <h2 class="engineer">${Engineer.getRole}</h2>
+// var html;
+function generateIndex (team) {
+  function generateManager(Manager) {
+      return `
+        <h2 class="Manager">${Manager.getRole}</h2>
         <p>
-          Name: ${Engineer.getName}
-          Id: ${Engineer.getId}
-          Email: ${Engineer.getEmail}
-          GitHub: ${Engineer.getGithub}
+          Name: ${Manager.getName}
+          Id: ${Manager.getId}
+          Email: ${Manager.getEmail}
+          Office Number: ${Manager.officeNumber}
+        </p>
+     `;
+  };
+  function generateIntern(Intern) {
+      if(Intern.getRole() === "Intern"){
+      return `
+        <h2 class="intern">${Intern.getRole}</h2>
+        <p>
+          Name: ${Intern.getName}
+          Id: ${Intern.getId}
+          Email: ${Intern.getEmail}
+          School: ${Intern.getSchool}
+        </p>    
+      `;
+    };
+  };
+    function generateEngineer(Engineer) {
+      if(Engineer.getRole() === "Engineer"){
+      return `
+          <h2 class="engineer">${Engineer.getRole}</h2>
+          <p>
+            Name: ${Engineer.getName}
+            Id: ${Engineer.getId}
+            Email: ${Engineer.getEmail}
+            GitHub: ${Engineer.getGithub}
           </p>
-  `
- }
+      `;
+    };
+  };
+
+  var html = [];
+
+  html.push(team
+    .filter(employee => employee.getRole() === "Manager")
+    .map(manager => generateManager(manager))
+  );
+  html.push(team
+      .filter(employee => employee.getRole() === "Engineer")
+      .map(engineer => generateEngineer(engineer))
+      .join("")
+  );
+  html.push(team
+      .filter(employee => employee.getRole() === "Intern")
+      .map(intern => generateIntern(intern))
+      .join("")
+  );
+
+  return html.join("");
 }
-  function generateIndex(team) {
-    for(let i = 0; i < team.length; i++) {
-      if(team[i].getRole() == "Engineer") {
-        html += generateEngineer(team[i])
-      }else if(team[i].getRole() == "Intern") {
-        html += generateIntern(team[i])
+
+
+module.exports = team => {
+    // for(let i = 0; i < team.length; i++) {
+    //   if(team[i].getRole() == "Engineer") {
+    //     html += generateEngineer(team[i])
+    //   }else if(team[i].getRole() == "Intern") {
+    //     html += generateIntern(team[i])
+    //   } else if(team[i].getRole() == "Manager"){
+    //     html += generateIntern(team[i])
+    //   }
     return `
   <!DOCTYPE html>
   <html lang="en">
@@ -61,13 +85,10 @@ function generateIntern(Intern) {
     </header>
     <section>
         <div>
-          ${generateManager}
-          ${generateEngineer}
-          ${generateIntern}
+          ${generateIndex(team)}
         </div>
-      </section>
+    </section>
   </body>
   </html>
-  `
-        }}}
-  module.exports = generateIndex;
+  `;
+};
